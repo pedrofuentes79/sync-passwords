@@ -6,6 +6,7 @@ LOG_PATH = "rclone.log"
 CONFIG_PATH = "config.json"
 MOUNT_PLIST_PATH = "com.pedranji.sync-passwords.plist"
 HOURLY_PLIST_PATH = "com.pedranji.sync-passwords.hourly.plist"
+system = platform.system()
 
 def generate_plist(config_path: str = CONFIG_PATH, output_path: str = MOUNT_PLIST_PATH) -> None:
     """Generate a launchd plist file using parameters from config.json."""
@@ -64,7 +65,6 @@ def load_launchd_job(plist_path: str) -> None:
 
 
 def setup_hourly_job() -> None:
-    system = platform.system()
     python_exe = sys.executable
     syncer_abs_path = os.path.abspath("syncer.py")
 
@@ -99,8 +99,12 @@ def setup_hourly_job() -> None:
 
 if __name__ == "__main__":
     # Regenerate mount plist (if applicable) and load it
-    # generate_plist(output_path=MOUNT_PLIST_PATH)
-    # load_launchd_job(MOUNT_PLIST_PATH)
+    if system == "Darwin":
+        generate_plist(output_path=MOUNT_PLIST_PATH)
+        load_launchd_job(MOUNT_PLIST_PATH)
+    elif system == "Linux":
+        # TODO: implement automatic linux mount (I think it's easy)
+        pass
 
     # Set up hourly job for syncer.py
     setup_hourly_job()
