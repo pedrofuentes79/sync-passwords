@@ -2,3 +2,4 @@ myPasswords
 *.log
 *.txt
 backups/
+*.plist
