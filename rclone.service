@@ -11,7 +11,8 @@ ExecStart=/usr/bin/rclone mount google_drive_keepass:Pedro/KeePass /home/pedrofu
   --dir-cache-time 72h \
   --drive-chunk-size 32M \
   --vfs-read-chunk-size 128M \
-  --vfs-read-chunk-size-limit off
+  --vfs-read-chunk-size-limit off \
+  --allow-non-empty
 ExecStop=/bin/fusermount -u /home/pedrofuentes79/google_drive_keepass
 Restart=on-failure
 RestartSec=5
