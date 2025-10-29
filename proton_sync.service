@@ -1,0 +1,10 @@
+[Unit]
+Description=Sync KeePass to Proton Drive
+After=rclone.service
+Requires=rclone.service
+
+[Service]
+Type=oneshot
+# only add the password if you encrypted your rclone.conf; otherwise ignore
+Environment="RCLONE_CONFIG_PASS=YOUR_RCLONE_PASSWORD_HERE"
+ExecStart=/usr/bin/rclone sync google_drive_keepass:Pedro/KeePass proton_drive_keepass:KeePass --config=/home/pedrofuentes79/.config/rclone/rclone.conf -v --log-file=/home/pedrofuentes79/.local/share/keepass-sync.log

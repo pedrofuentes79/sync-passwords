@@ -5,6 +5,7 @@ Wants=network-online.target
 
 [Service]
 Type=simple
+Environment="RCLONE_CONFIG_PASS=YOUR_RCLONE_PASSWORD_HERE"
 ExecStart=/usr/bin/rclone mount google_drive_keepass:Pedro/KeePass /home/pedrofuentes79/google_drive_keepass \
   --config=/home/pedrofuentes79/.config/rclone/rclone.conf \
   --vfs-cache-mode writes \
