@@ -1,7 +1,7 @@
 {
-    "username": "pedranji",
+    "username": "pedrofuentes79",
     "remote_name": "google_drive_keepass",
-    "remote_folder_local_path": "/Users/pedranji/google_drive_keepass",
+    "remote_folder_local_path": "/home/pedrofuentes79/google_drive_keepass",
     "remote_password_file_name": "myPasswords",
-    "local_password_file_path": "/Users/pedranji/Documents/sync-passwords/myPasswords"
+    "local_password_file_path": "/home/pedrofuentes79/Projects/sync-passwords/myPasswords"
 }
